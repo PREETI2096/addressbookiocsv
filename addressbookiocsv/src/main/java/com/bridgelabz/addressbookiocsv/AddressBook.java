@@ -1,7 +1,7 @@
 package com.bridgelabz.addressbookiocsv;
 
 	import com.opencsv.CSVReader;
-	import com.opencsv.exceptions.*;
+	import com.opencsv.exceptions.CsvValidationException;
 	import java.io.BufferedReader;
 	import java.io.File;
 	import java.io.FileReader;
@@ -405,7 +405,27 @@ package com.bridgelabz.addressbookiocsv;
 	        }catch (IOException e){
 	            throw new RuntimeException(e);
 	        }
-	   
+	    
+//	    public static <CSVReader> void readFromCSVFile() {
+//	        try (BufferedReader br = Files.newBufferedReader(Paths.get("D:\bridgelabz 210/addressbookio/src/com/bridgelabz/addressbookio/addressbookio.csv"))){
+//	            // CSV file delimiter
+//	            String DELIMITER = ",";
+	//
+//	            // read the file line by line/
+//	            String line;
+//	            while ((line = br.readLine()) != null)
+//	            //returns a Boolean value
+//	            {
+//	                String[] contact = line.split(DELIMITER);
+//	                //use comma as separator
+////	                System.out.println("Contact[First Name=" + contact[1] + ", Last Name=" + contact[2] + ", Address=" + contact[3]+ ", City= " + contact[4] + ", State= " + contact[5]+
+//	                        "Pin Code=" + contact[6] + ", Phone Number=" + contact[7] + ", Email Address=" + contact[8] + "]");
+//	                System.out.println("Contacts["+ String.join(", ", contact) +"]");
+//	            }
+//	        } catch (IOException e) {
+//	            throw new RuntimeException(e);
+//	        }
+//	    }
 
 	        try (Reader reader = Files.newBufferedReader(Paths.get(String.valueOf(csvFile)));
 	             CSVReader csvReader = new CSVReader(reader)) {
@@ -422,7 +442,7 @@ package com.bridgelabz.addressbookiocsv;
 	            }
 	        } catch (IOException e) {
 	            throw new RuntimeException(e);
-	        } catch (CsvBeanIntrospectionException e) {
+	        } catch (CsvValidationException e) {
 	            throw new RuntimeException(e);
 	        }
 	    }
